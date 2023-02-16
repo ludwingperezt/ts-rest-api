@@ -5,7 +5,7 @@
  * lógica de negocio. El controlador solo recibe datos y responde.
  */
 import { Request, Response } from "express"
-import { insertItem } from "../services/item.service"
+import { insertCar, getCars } from "../services/item.service"
 import { handleHttp } from "../utils/error.handle"
 
 const getItem = (req: Request, res: Response) => {
@@ -16,11 +16,12 @@ const getItem = (req: Request, res: Response) => {
     }
 }
 
-const getItems = (req: Request, res: Response) => {
+const getItems = async (req: Request, res: Response) => {
     try {
-
+        const response = await getCars()
+        res.send(response)
     } catch (e) {
-        handleHttp(res, "Error_get_items")
+        handleHttp(res, "Error_get_items", e)
     }
 }
 
@@ -28,13 +29,13 @@ const updateItem = (req: Request, res: Response) => {
     try {
 
     } catch (e) {
-        handleHttp(res, "Error_update_item")
+        handleHttp(res, "Error_update_item", e)
     }
 }
 
 const postItem = async ({body}: Request, res: Response) => {
     try {
-        const responseItem = await insertItem(body)
+        const responseItem = await insertCar(body)
         res.send(responseItem)
 
     } catch (e) {
@@ -46,7 +47,7 @@ const deleteItem = (req: Request, res: Response) => {
     try {
 
     } catch (e) {
-        handleHttp(res, "Error_delete_item")
+        handleHttp(res, "Error_delete_item", e)
     }
 }
 
