@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  db:
+    image: mongo:6
+    volumes:
+      - type: volume
+        source: mongo_data
+        target: /data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    ports:
+      - "27017-27019:27017-27019"
+    environment:
+      - MONGO_INITDB_DATABASE=api-rest-ts
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+volumes:
+  mongo_data:
