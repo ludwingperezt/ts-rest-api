@@ -20,4 +20,18 @@ const getCar = async (id:string) => {
     return responseItem
 }
 
-export { insertCar, getCars, getCar }
+const updateCar = async (id:string, data:Car) => {
+    // La función findOneAndUpdate busca en la colección el objeto según la query
+    // especificada y si lo encuentra lo actualiza con la data del segundo parámetro
+    const responseItem = await ItemModel.findOneAndUpdate({_id: id}, data, 
+        {
+            new:true // Esta configuración indica que el objeto obtenido como respuesta a la llamada a la función findOneAndUpdate() es el objeto actualizado
+        })
+    return responseItem
+}
+
+const deleteCar = async (id:string) => {
+    
+}
+
+export { insertCar, getCars, getCar, updateCar, deleteCar }
