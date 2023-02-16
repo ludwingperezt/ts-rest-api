@@ -15,4 +15,9 @@ const getCars = async () => {
     return responseItem
 }
 
-export { insertCar, getCars }
+const getCar = async (id:string) => {
+    const responseItem = await ItemModel.findOne({_id: id})
+    return responseItem
+}
+
+export { insertCar, getCars, getCar }

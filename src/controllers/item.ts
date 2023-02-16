@@ -5,12 +5,14 @@
  * lógica de negocio. El controlador solo recibe datos y responde.
  */
 import { Request, Response } from "express"
-import { insertCar, getCars } from "../services/item.service"
+import { insertCar, getCars, getCar } from "../services/item.service"
 import { handleHttp } from "../utils/error.handle"
 
-const getItem = (req: Request, res: Response) => {
+const getItem = async ({params}: Request, res: Response) => {
     try {
-
+        const { id } = params
+        const response = await getCar(id)
+        res.send(response)
     } catch (e) {
         handleHttp(res, "Error_get_item", e)
     }
