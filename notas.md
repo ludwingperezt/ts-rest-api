@@ -32,3 +32,14 @@ En la carpeta src/ se crea la estructura de carpetas del proyecto
 
 ===============
 Mongoose funciona con esquemas, que son representaciones de los datos que se van a almacenar en la base de datos.
+
+===============
+
+Se instalan los paquetes
+- bcryptjs para el cifrado de contraseñas
+- jsonwebtoken para generar tokens de autenticación
+
+npm i bcryptjs jsonwebtoken
+
+Y también se instalan los types de esas librerías:
+npm i @types/bcryptjs @types/jsonwebtoken
