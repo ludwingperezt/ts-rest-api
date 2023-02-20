@@ -35,6 +35,7 @@ const loginUser = async ({email, password}: Auth) => {
 
     if (!isCorrect) return "BAD_PASSWORD"
 
+    // En el payload del token JWT generado se envía el ID del usuario.
     const token = generateToken(userFound.id)
 
     const data = {
