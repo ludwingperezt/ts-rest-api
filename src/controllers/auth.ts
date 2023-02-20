@@ -10,8 +10,18 @@ const registerController = async ({body}: Request, res: Response) => {
     res.send(responseUser)
 }
 
-const loginController = async (req: Request, res: Response) => {
-    
+const loginController = async ({ body }: Request, res: Response) => {
+    const {email, password} = body
+    const responseUser = await loginUser({email, password})
+
+    // Esto es para estandarizar respuestas:
+    if (responseUser === 'BAD_PASSWORD') {
+        res.status(403)
+        res.send(responseUser)
+    }
+    else {
+        res.send(responseUser)
+    }
 }
 
 export { loginController, registerController}

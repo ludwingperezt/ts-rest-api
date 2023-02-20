@@ -1,9 +1,10 @@
 /**
  * Servicio para lógica de negocio del manejo de autenticación
  */
+import { Auth } from "../interfaces/auth.interface"
 import { User } from "../interfaces/user.interface"
 import UserModel from "../models/user"
-import { encrypt } from "../utils/bcrypt.handle"
+import { encrypt, verify } from "../utils/bcrypt.handle"
 
 const registerNewUser = async ({email, password, name}: User) => {
     const checkExists = await UserModel.findOne({email})
@@ -17,8 +18,23 @@ const registerNewUser = async ({email, password, name}: User) => {
     return registeredUser
 }
 
-const loginUser = async () => {
+/**
+ * Servicio para hacer login
+ * @param param0 
+ * @returns 
+ */
+const loginUser = async ({email, password}: Auth) => {
+    const userFound = await UserModel.findOne({email})
 
+    if (!userFound) return "USER_NOT_EXISTS"
+
+    const passwordHash = userFound.password
+
+    const isCorrect = await verify(password, passwordHash)
+
+    if (!isCorrect) return "BAD_PASSWORD"
+
+    return userFound
 }
 
 export {registerNewUser, loginUser}
