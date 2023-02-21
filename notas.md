@@ -1,3 +1,6 @@
+Curso de referencia:
+https://www.youtube.com/watch?v=T1QFGwOnQxQ
+
 Instalar typescript de manera global:
 npm i typescript -g
 
