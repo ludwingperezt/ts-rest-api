@@ -43,3 +43,14 @@ npm i bcryptjs jsonwebtoken
 
 Y también se instalan los types de esas librerías:
 npm i @types/bcryptjs @types/jsonwebtoken
+
+===============
+
+Para compilar:
+1. Hay que especificar en el archivo tsconfig.json la carpeta de salida
+    de la compilación en el elemento "outDir"
+2. La compilación se hace con el comando
+    tsc
+    Pero puede especificarse en package.json un script para que lo haga.
+3. Se debe agregar un comando para correr la aplicación.  Eso se hace en
+    el archivo package.json, especificando un script específico para ello.
