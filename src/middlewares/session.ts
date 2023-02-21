@@ -30,6 +30,10 @@ const checkJwt = (req: RequestExt, res: Response, next: NextFunction) => {
         // template string porque el valor de jwt puede ser undefined en algun
         // momento y dicha función no acepta undefined, sino que solo acepta strings.
         const isUser = verifyToken(`${jwt}`)
+        
+        // Esto es lo que se hizo en el ejemplo para resolver el error de tipado
+        // https://youtu.be/T1QFGwOnQxQ?t=8768
+        // const isUser = verifyToken(`${jwt}`) as {id: string}
 
         if (!isUser) {
             res.status(401)

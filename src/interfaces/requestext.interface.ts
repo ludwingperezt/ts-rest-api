@@ -12,4 +12,8 @@ import { JwtPayload } from "jsonwebtoken";
 
 export interface RequestExt extends Request {
     user?: string | JwtPayload
+
+    // Esto se hizo en el ejemplo para resolver el problema de tipado
+    // https://youtu.be/T1QFGwOnQxQ?t=8633
+    // user?: JwtPayload | {id:string}
 }
