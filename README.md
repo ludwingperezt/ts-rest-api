@@ -3,7 +3,7 @@
 This is a very basic REST API written in Typescript.
 
 I made this project as the example project for this tutorial:
-(NODEJS de Crea una REST API Rest escalable y sostenible con Typescript y Express)[https://www.youtube.com/watch?v=T1QFGwOnQxQ]
+[NODEJS de Crea una REST API Rest escalable y sostenible con Typescript y Express](https://www.youtube.com/watch?v=T1QFGwOnQxQ)
 
 ## Run ##
 
